@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMCAP.MainPage">
+    
+    
+    <ScrollView>
+        <HorizontalStackLayout Margin="20"
+                           HeightRequest="200">
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0">
+
+                <StackLayout>
+                    <Label Text="Código de Barras:" />
+                    <Entry x:Name="CodigoDeBarras" Placeholder="Ingrese el código de barras" />
+                    <Label Text="Ecommerce:" />
+                    <Entry x:Name="Ecommerce" Placeholder="Ingrese el ecommerce" />
+                    <Label Text="Básico:" />
+                    <Entry x:Name="Basico" Placeholder="Ingrese el básico" />
+                    <Button Text="Guardar" Clicked="OnGuardarClicked" />
+                </StackLayout>
+
+
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0">
+
+                <ListView x:Name="ListaProducto" ItemsSource="{Binding Productos}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding CodeBarras}" Detail="{Binding PhotoBucketID}" TextColor="White"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Button
+                    x:Name="BtnConsultarProductos"
+                    Text="Consultar Productos"
+                    SemanticProperties.Hint="Consulta productos en BD"
+                    Clicked="ConsultProducts"
+                    HorizontalOptions="Center" />
+                
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+      
+    </ScrollView>
+
+</ContentPage>
